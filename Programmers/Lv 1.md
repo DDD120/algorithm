@@ -495,5 +495,17 @@ function solution(numbers, hand) {
     return answer;
 }
 ```
+[가장 가까운 같은 글자](https://school.programmers.co.kr/learn/courses/30/lessons/142086) (연습문제)
+```javascript
+function solution(s) {
+    const answer = [...s].map((char, index) => {
+        if(index === 0) return -1;
+        const searchIndex = s.lastIndexOf(char, index - 1);
+        return searchIndex < 0 ? -1 : index - searchIndex;
+    })
+    return answer;
+}
+```
 
-> Written with [StackEdit](https://stackedit.io/).
+
+
