@@ -506,6 +506,21 @@ function solution(s) {
     return answer;
 }
 ```
-
+[소수 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/12921) (연습문제)
+```javascript
+function solution(n) {   
+    const arr = Array(n + 1).fill(true).fill(false, 0, 2);
+    for(let i = 2;i <= Math.sqrt(n);i++){
+        if(arr[i]){
+            for(let j = i * i;j <= n;j += i){
+                arr[j] = false;
+            }
+        }
+    }
+    
+    const answer = arr.filter((value) => value).length;
+    return answer;
+}
+```
 
 
