@@ -522,5 +522,17 @@ function solution(n) {
     return answer;
 }
 ```
-
-
+[과일 장수](https://school.programmers.co.kr/learn/courses/30/lessons/135808) (연습문제)
+```javascript
+function solution(k, m, score) {
+    let answer = 0;
+    const sortScore = score.sort((a,b) => b - a);
+    const limitBox = Math.floor(score.length / m);
+    
+    for(let i = 0;i < limitBox;i++){
+        answer += sortScore.slice(m * i, m + m * i)[m-1] * m;
+    }
+    
+    return answer;
+}
+```
