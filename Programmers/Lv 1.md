@@ -536,3 +536,19 @@ function solution(k, m, score) {
     return answer;
 }
 ```
+[명예의 전당(1)](https://school.programmers.co.kr/learn/courses/30/lessons/138477) (연습 문제)
+```javascript
+function solution(k, score) {
+    const hof = [];
+    const answer = score.map((s, i) => {
+        const lowest = hof.at(-1);
+        if(i >= k && lowest >= s) return lowest;
+        if(i >= k && lowest < s) hof.pop();
+        hof.push(s);
+        hof.sort((a,b) => b - a);
+        return hof.at(-1);
+    })
+    
+    return answer;
+}
+```
