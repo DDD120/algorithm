@@ -552,3 +552,21 @@ function solution(k, score) {
     return answer;
 }
 ```
+[기사단원의 무기] (https://school.programmers.co.kr/learn/courses/30/lessons/136798) (연습 문제)
+```javascript
+function solution(number, limit, power) {
+    const divisor = []
+    for(let num = 1; num <= number; num++){
+        let count = 1
+        for(let i = 1; i <= num / 2; i++){
+	        if(!(num % i)) count += 1
+	    }
+        divisor.push(count)
+    }
+      
+    const answer = divisor.reduce((acc, cur) => {
+        return cur > limit ? acc += power : acc += cur
+    }, 0)
+    return answer
+}
+```
