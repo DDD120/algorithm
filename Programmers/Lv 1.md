@@ -552,7 +552,7 @@ function solution(k, score) {
     return answer;
 }
 ```
-[기사단원의 무기] (https://school.programmers.co.kr/learn/courses/30/lessons/136798) (연습 문제)
+[기사단원의 무기](https://school.programmers.co.kr/learn/courses/30/lessons/136798) (연습 문제)
 ```javascript
 function solution(number, limit, power) {
     const divisor = []
