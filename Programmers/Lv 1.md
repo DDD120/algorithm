@@ -570,3 +570,14 @@ function solution(number, limit, power) {
     return answer
 }
 ```
+[추억 점수](https://school.programmers.co.kr/learn/courses/30/lessons/176963) (연습 문제)
+```javascript
+function solution(name, yearning, photo) {
+    const answer = photo.map((array) => (
+        array.reduce((acc, cur) => (
+            acc += yearning[name.indexOf(cur)] ?? 0
+        ), 0))
+    )
+    return answer
+}
+```
