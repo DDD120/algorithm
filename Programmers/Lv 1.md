@@ -581,3 +581,20 @@ function solution(name, yearning, photo) {
     return answer
 }
 ```
+[카드 뭉치](https://school.programmers.co.kr/learn/courses/30/lessons/159994) (연습 문제)
+```javascript
+function solution(cards1, cards2, goal) {
+    let index1 = 0
+    let index2 = 0
+
+    const fail = goal.some((word) => {
+        if(word !== cards1[index1] && word !== cards2[index2]) return true
+        if(word === cards1[index1]) index1 += 1
+        if(word === cards2[index2]) index2 += 1
+        return false
+    })
+    
+    return fail ? "No" : "Yes"
+}
+```
+
