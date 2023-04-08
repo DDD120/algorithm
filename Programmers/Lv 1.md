@@ -597,4 +597,19 @@ function solution(cards1, cards2, goal) {
     return fail ? "No" : "Yes"
 }
 ```
+[덧칠하기](https://school.programmers.co.kr/learn/courses/30/lessons/161989) (연습문제)
+```javascript
+function solution(n, m, section) {
+    let answer = 0
+    let next = 0
+    
+    section.forEach((index) => {
+        if(next > index) return
+        answer += 1
+        next = index + m
+    })
+    
+    return answer
+}
+```
 
