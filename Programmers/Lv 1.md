@@ -612,4 +612,25 @@ function solution(n, m, section) {
     return answer
 }
 ```
+[숫자 짝궁](https://school.programmers.co.kr/learn/courses/30/lessons/131128) (연습문제)
+```javascript
+function solution(X, Y) {
+    let mate = ''
+    const x = [...X]
+    const y = [...Y]
+    
+    for(let i = 0;i < 10;i++){
+        const a = x.filter((char) => Number(char) === i).length
+        const b = y.filter((char) => Number(char) === i).length
+        mate += String(i).repeat(Math.min(a,b))
+    }
+    
+    if(!mate) return "-1"
+    if(Number(mate) === 0) return "0"
+    const answer = [...mate].sort((a,b) => Number(b) - Number(a)).join("")
+    
+    return answer
+    
+}
+```
 
