@@ -633,4 +633,19 @@ function solution(X, Y) {
     
 }
 ```
-
+[옹알이(2)](https://school.programmers.co.kr/learn/courses/30/lessons/133499) (연습문제)
+```javascript
+function solution(babbling) {
+    let answer = 0
+    const ableBabbling = ["aya", "ye", "woo", "ma"]
+    babbling.forEach((bab) => {
+        ableBabbling.forEach((able) => {
+            if(bab.includes(`${able}${able}`)) return
+            bab = bab.replaceAll(able, " ")
+        })
+        if(!bab.trim()) answer++
+    })
+    
+    return answer
+}
+```
