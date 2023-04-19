@@ -649,3 +649,27 @@ function solution(babbling) {
     return answer
 }
 ```
+[문자열 나누기](https://school.programmers.co.kr/learn/courses/30/lessons/140108) (연습문제)
+```javascript
+function solution(s) {
+    let answer = 0
+    let xChar = null
+    let xCount = 1
+    let yCount = 0
+
+    s.split('').forEach((cur, index, array) => {
+        if(index === array.length - 1) return answer++
+        if(!xChar) return xChar = cur
+        cur === xChar ? xCount++ : yCount++
+        if(xCount === yCount) {
+            answer++
+            xChar = null
+            xCount = 1
+            yCount = 0
+        }
+        
+    })
+    
+    return answer
+}
+```
