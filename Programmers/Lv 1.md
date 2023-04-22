@@ -673,3 +673,18 @@ function solution(s) {
     return answer
 }
 ```
+[둘만의 암호](https://school.programmers.co.kr/learn/courses/30/lessons/155652) (연습문제)
+```javascript
+function solution(s, skip, index) {
+    let answer = ''
+    const skipRe = new RegExp(`[^${skip}]`, 'g')
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.match(skipRe)
+
+    for(const c of s){
+        const i = alphabet.indexOf(c) + index
+        answer += alphabet[i % alphabet.length]
+    }
+
+    return answer
+}
+```
