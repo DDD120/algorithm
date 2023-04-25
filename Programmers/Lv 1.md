@@ -688,3 +688,22 @@ function solution(s, skip, index) {
     return answer
 }
 ```
+[대충 만든 자판](https://school.programmers.co.kr/learn/courses/30/lessons/160586) (연습문제)
+```javascript
+function solution(keymap, targets) {
+    const answer = targets.map((target) => {
+        const a = target.split('').reduce((acc, cur) => {
+            let minIndex
+            keymap.forEach((key) => {
+                const index = key.indexOf(cur) + 1
+                if(!index) return
+                if(index < minIndex || !minIndex) minIndex = index
+            })
+            return minIndex ? acc += minIndex : undefined
+        }, 0) 
+        return a ? a : -1
+    })
+    
+    return answer
+}
+```
