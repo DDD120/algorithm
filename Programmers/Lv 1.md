@@ -707,3 +707,28 @@ function solution(keymap, targets) {
     return answer
 }
 ```
+[햄버거 만들](https://school.programmers.co.kr/learn/courses/30/lessons/133502) (연습문제)
+```javascript
+function solution(ingredient) {
+    let answer = 0
+    const counter = []
+
+    for(const i of ingredient){
+        counter.push(i)
+        if(counter.length >= 4){
+            if(counter[counter.length - 4] === 1 &&
+               counter[counter.length - 3] === 2 &&
+               counter[counter.length - 2] === 3 &&
+               counter[counter.length - 1] === 1){
+                    answer += 1
+                    counter.pop()
+                    counter.pop()
+                    counter.pop()
+                    counter.pop()
+               }
+        }
+    }
+    
+    return answer
+}
+```
