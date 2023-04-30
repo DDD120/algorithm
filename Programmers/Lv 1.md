@@ -732,3 +732,20 @@ function solution(ingredient) {
     return answer
 }
 ```
+[달리기 경주](https://school.programmers.co.kr/learn/courses/30/lessons/178871) (연습문제)
+```javascript
+function solution(players, callings) {
+    const playersMap = players.reduce((map, player, index) => {
+        map.set(player, index)
+        return map
+    }, new Map)
+
+    callings.forEach((calling) => {
+        const i = playersMap.get(calling)
+        playersMap.set(players[i], i - 1)
+        playersMap.set(players[i - 1], i)
+        players.splice(i - 1, 2, players[i], players[i - 1])
+    })
+    return players
+}
+```
