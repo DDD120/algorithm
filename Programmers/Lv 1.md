@@ -749,3 +749,17 @@ function solution(players, callings) {
     return players
 }
 ```
+[바탕화면 정리](https://school.programmers.co.kr/learn/courses/30/lessons/161990) (연습문제)
+```javascript
+function solution(wallpaper) {
+    const lu = wallpaper.map((row) => row.indexOf("#"))
+    const rd = wallpaper.map((row) => row.lastIndexOf("#"))
+
+    const lux = lu.findIndex((num) => num > -1)
+    const luy = Math.min(...lu.filter((p) => p !== -1))
+    const rdx = rd.length - rd.reverse().findIndex((num) => num > -1)
+    const rdy = Math.max(...rd) + 1
+    
+    return [lux, luy, rdx, rdy]
+}
+```
