@@ -763,3 +763,55 @@ function solution(wallpaper) {
     return [lux, luy, rdx, rdy]
 }
 ```
+[공원 산책](https://school.programmers.co.kr/learn/courses/30/lessons/172928) (연습문제)
+```javascript
+function solution(park, routes) {
+    const current = []
+    park.some((row, index) => {
+        const sIndex = row.indexOf("S")
+        if(sIndex !== -1){
+            current.push(index, sIndex)
+            return true
+        }
+    })
+
+    routes.forEach((route) => {        
+        const op = route[0]
+        const step = Number(route[2])
+        let isBlock = false
+
+        const move = (dir, isPlus) => {
+            const arrive = current[dir] + (isPlus ? step : -step)
+            if(arrive < 0 || (dir === 0 ?
+               arrive >= park.length : arrive >= park[0].length)) return
+            for(let i = 1;i <= step; i++){
+                const g = current[dir] + (isPlus ? i : -i)
+                const going = dir === 0 ? 
+                      park[g][current[1]] : park[current[0]][g] 
+                if(going === "X") {
+                    isBlock = true
+                    break
+                } 
+            }
+            if(!isBlock) current[dir] = arrive
+        }
+
+        switch(op){
+            case "N":
+                move(0,false)
+                break
+            case "E":
+                move(1,true)
+                break
+            case "S":
+                move(0, true)
+                break
+            case "W":
+               move(1, false)
+                break
+        }
+    })
+
+    return current
+}
+```
