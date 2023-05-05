@@ -815,3 +815,17 @@ function solution(park, routes) {
     return current
 }
 ```
+[부족한 금액 계산하](https://school.programmers.co.kr/learn/courses/30/lessons/82612) (위클리 챌린지)
+```javascript
+function solution(price, money, count) {
+    let pay = 0
+
+    for(let i=1;i <= count;i++){
+        pay += price * i
+    }
+    
+    const answer = pay - money
+    
+    return answer >= 0 ? answer : 0
+}
+```
