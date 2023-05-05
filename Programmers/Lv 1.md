@@ -815,7 +815,7 @@ function solution(park, routes) {
     return current
 }
 ```
-[부족한 금액 계산하](https://school.programmers.co.kr/learn/courses/30/lessons/82612) (위클리 챌린지)
+[부족한 금액 계산하기](https://school.programmers.co.kr/learn/courses/30/lessons/82612) (위클리 챌린지)
 ```javascript
 function solution(price, money, count) {
     let pay = 0
@@ -829,3 +829,11 @@ function solution(price, money, count) {
     return answer >= 0 ? answer : 0
 }
 ```
+[3진법 뒤집기](https://school.programmers.co.kr/learn/courses/30/lessons/68935) (월간 코드 챌린지 시즌1)
+```javascript
+function solution(n) {
+    return parseInt(n.toString(3).split('').reverse().join(''), 3)
+}
+```
+
+
