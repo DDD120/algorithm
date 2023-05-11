@@ -851,4 +851,13 @@ function solution(d, budget) {
     return answer
 }
 ```
-
+[최소직사각형](https://school.programmers.co.kr/learn/courses/30/lessons/86491) (완전탐색)
+```javascript
+function solution(sizes) {
+    const sortSizes = sizes.map((size) => size.sort((a,b) => a-b))
+    const w = Math.max(...sortSizes.map((size) => size[0]))
+    const h = Math.max(...sortSizes.map((size) => size[1]))
+    
+    return w * h
+}
+```
