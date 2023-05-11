@@ -835,5 +835,20 @@ function solution(n) {
     return parseInt(n.toString(3).split('').reverse().join(''), 3)
 }
 ```
-
+[예산](https://school.programmers.co.kr/learn/courses/30/lessons/12982) (Summer/Winter Coding(~2018))
+```javascript
+function solution(d, budget) {
+    let answer
+    d.sort((a,b) => a-b)
+    for(let i=d.length;i >= 0;i--){
+        const array = d.slice(0, i)
+        const sum = array.reduce((acc, cur) => acc += cur, 0)
+        if(sum <= budget){
+            answer = i
+            break
+        }
+    }
+    return answer
+}
+```
 
