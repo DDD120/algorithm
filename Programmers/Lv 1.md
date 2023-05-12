@@ -861,3 +861,20 @@ function solution(sizes) {
     return w * h
 }
 ```
+[[1차] 비밀지도](https://school.programmers.co.kr/learn/courses/30/lessons/17681) (2018 KAKAO BLIND RECRUITMENT)
+```javascript
+function solution(n, arr1, arr2) {
+    const map = arr1.map((row, index) => {
+        const a1 = row.toString(2).padStart(n, "0")
+        const a2 = arr2[index].toString(2).padStart(n, "0")
+        
+        const decode = a1.split('').map((chr, index) => 
+            Number(chr) + Number(a2[index]) ? "#" : " " 
+        ).join("")
+        
+        return decode
+    })
+    
+    return  map
+}
+```
