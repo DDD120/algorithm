@@ -707,7 +707,7 @@ function solution(keymap, targets) {
     return answer
 }
 ```
-[햄버거 만들](https://school.programmers.co.kr/learn/courses/30/lessons/133502) (연습문제)
+[햄버거 만들기](https://school.programmers.co.kr/learn/courses/30/lessons/133502) (연습문제)
 ```javascript
 function solution(ingredient) {
     let answer = 0
@@ -878,7 +878,7 @@ function solution(n, arr1, arr2) {
     return  map
 }
 ```
-[숫자 문자열과 영단어](https://school.programmers.co.kr/learn/courses/30/lessons/17681) (2021 카카오 채용연계형 인턴십)
+[숫자 문자열과 영단어](https://school.programmers.co.kr/learn/courses/30/lessons/81301) (2021 카카오 채용연계형 인턴십)
 ```javascript
 function solution(s) {
     let string = s
