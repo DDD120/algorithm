@@ -916,3 +916,17 @@ function solution(array, commands) {
     return answer
 }
 ```
+[두 개 뽑아서 더하기](https://school.programmers.co.kr/learn/courses/30/lessons/68644) (월간 코드 챌린지 시즌1)
+```javascript
+function solution(numbers) {
+    const results = []
+    numbers.forEach((fixed, index, origin) => {
+        const rest = origin.slice(index + 1)
+        const sum = rest.map((num) => fixed + num)
+        results.push(...sum)
+    });
+
+    const answer = [...new Set(results)].sort((a,b) => a-b)
+    return answer
+}
+```
