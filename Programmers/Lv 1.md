@@ -878,3 +878,30 @@ function solution(n, arr1, arr2) {
     return  map
 }
 ```
+[숫자 문자열과 영단어](https://school.programmers.co.kr/learn/courses/30/lessons/17681) (2021 카카오 채용연계형 인턴십)
+```javascript
+function solution(s) {
+    let string = s
+    const num = {
+        zero: 0,
+        one: 1,
+        two: 2,
+        three: 3,
+        four: 4,
+        five: 5,
+        six: 6,
+        seven: 7,
+        eight: 8,
+        nine: 9
+    }
+
+    const keys = Object.keys(num).join('|')
+    const words = string.match(new RegExp(`${[keys]}`,'g'))
+
+    words?.forEach((word) => {
+        string = string.replace(word, num[word])
+    })
+
+    return Number(string)
+}
+```
