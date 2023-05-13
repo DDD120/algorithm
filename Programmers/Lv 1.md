@@ -930,3 +930,21 @@ function solution(numbers) {
     return answer
 }
 ```
+[모의고사](https://school.programmers.co.kr/learn/courses/30/lessons/42840) (완전탐색)
+```javascript
+function solution(answers) {
+    const answer = []
+    const scores = [0,0,0]
+    answers.forEach((answer, index) => {
+        if(answer === Number("12345"[index % 5])) scores[0]++
+        if(answer === Number("21232425"[index % 8])) scores[1]++
+        if(answer === Number("3311224455"[index % 10])) scores[2]++
+    })
+
+    scores.forEach((score, index) => {
+        if(score === Math.max(...scores)) answer.push(index+1)
+    })
+
+    return answer
+}
+```
