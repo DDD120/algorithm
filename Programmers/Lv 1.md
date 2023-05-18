@@ -948,3 +948,30 @@ function solution(answers) {
     return answer
 }
 ```
+[소수 만들기](https://school.programmers.co.kr/learn/courses/30/lessons/12977) (Summer/Winter Coding(~2018))
+```javascript
+function solution(nums) {
+    let answer = 0
+    const sums = []
+    for(let i=0;i < nums.length-2;i++){
+        for(let j=i+1;j < nums.length-1;j++){
+            for(let k=j+1;k < nums.length;k++){
+                sums.push(nums[i] + nums[j] + nums[k])
+            }
+        }
+    }
+
+    sums.forEach((sum) => {
+        let isPrime = true
+        for(let i=2;i <= sum/2;i++){
+            if(sum % i === 0){
+                isPrime = false
+                break
+            }
+        }
+        if(isPrime) answer += 1
+    })
+
+    return answer
+}
+```
