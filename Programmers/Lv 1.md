@@ -975,3 +975,23 @@ function solution(nums) {
     return answer
 }
 ```
+[실패율](https://school.programmers.co.kr/learn/courses/30/lessons/42889) (2019 KAKAO BLIND RECRUITMENT)
+```javascript
+function solution(N, stages) {
+    const players = []
+    let reach = stages.length
+    for(let i=1;i <= N;i++){
+        players[i-1] = [i, 0]
+        stages.forEach((stage) => {
+            if(stage === i) players[i-1] = [i, players[i-1][1] + 1]
+        })
+    }
+    const answer = players.map((player) => {
+        const fail = [player[0], player[1] / reach]
+        reach -= player[1]
+        return fail
+    }).sort((a,b) => b[1]-a[1]).map((stage) => stage[0])
+
+    return answer
+}
+```
