@@ -995,3 +995,23 @@ function solution(N, stages) {
     return answer
 }
 ```
+[[1차] 다트 게임](https://school.programmers.co.kr/learn/courses/30/lessons/17682) (2018 KAKAO BLIND RECRUITMENT)
+```javascript
+function solution(dartResult) {
+    const score = []
+     const scorecard = {
+        S: 1,
+        D: 2,
+        T: 3,
+        "*": 2,
+        "#": -1
+    }
+    const set = dartResult.matchAll(/\d+[SDT][*#]?/g)
+    Array.from(set, res => res[0]).forEach((s, i) => {
+        const option = scorecard[s.match(/[*#]/)] ?? 1
+        score[i] = s.match(/\d+/) ** scorecard[s.match(/[SDT]/)] * option
+        if(option === 2) score[i-1] *= option
+    })
+    return score[0] + score[1] + score[2]
+}
+```
