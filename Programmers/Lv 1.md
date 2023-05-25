@@ -1015,3 +1015,15 @@ function solution(dartResult) {
     return score[0] + score[1] + score[2]
 }
 ```
+[로또의 최고 순위와 최저 순위](https://school.programmers.co.kr/learn/courses/30/lessons/77484) (2021 Dev-Matching: 웹 백엔드 개발자(상반기))
+```javascript
+function solution(lottos, win_nums) {
+    const exclude = lottos.filter((lotto) => !win_nums.includes(lotto))
+    const zero = exclude.filter((num) => num === 0).length
+    const rank = exclude.length + 1
+    const highest =  rank - zero === 7 ? 6 : rank - zero
+    const lowest = rank === 7 ? 6 : rank
+
+    return [highest,lowest]
+}
+```
