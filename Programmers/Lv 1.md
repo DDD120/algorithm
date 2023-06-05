@@ -1027,3 +1027,27 @@ function solution(lottos, win_nums) {
     return [highest,lowest]
 }
 ```
+[체육법](https://school.programmers.co.kr/learn/courses/30/lessons/42862) (탐욕법(Greedy))
+```javascript
+function solution(n, lost, reserve) {
+    const realLost = lost.filter((num) => {
+        const i = reserve.indexOf(num)
+        if(i > -1){
+            reserve.splice(i,1)
+            return false
+        }
+        return true
+    })
+
+    const lostCount = realLost.sort().filter((num) => {
+        return !reserve.sort().some((re, i) => {
+            if([re - 1, re + 1].includes(num)){
+                reserve.splice(i, 1)
+                return true
+            }
+        })
+    }).length
+
+    return n - lostCount
+}
+```
