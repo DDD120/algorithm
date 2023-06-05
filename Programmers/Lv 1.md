@@ -1051,3 +1051,21 @@ function solution(n, lost, reserve) {
     return n - lostCount
 }
 ```
+[완주하지 못한 선수](https://school.programmers.co.kr/learn/courses/30/lessons/42576) (해시)
+```javascript
+function solution(participant, completion) {
+    let answer
+
+    const objCompletion = completion.reduce((obj, cur) => {
+        obj[cur] = obj[cur] ? obj[cur] += 1 : 1
+        return obj
+    }, {})
+
+    participant.some((p) => {
+        if(!objCompletion[p]) return answer = p
+        objCompletion[p] -= 1
+    })
+
+    return answer
+}
+```
