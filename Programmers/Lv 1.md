@@ -1069,3 +1069,27 @@ function solution(participant, completion) {
     return answer
 }
 ```
+[크레인 인형뽑기 게임](https://school.programmers.co.kr/learn/courses/30/lessons/64061) (2019 카카오 개발자 겨울 인턴십)
+```javascript
+function solution(board, moves) {
+    let answer = 0
+    const stack = []
+    moves.forEach((move) => {
+        const index = move - 1
+        board.some((row) => {
+            if(row[index]){
+                if(stack.at(-1) === row[index]){
+                    stack.pop()
+                    answer += 2
+                } else {
+                    stack.push(row[index])
+                }
+                row[index] = 0
+                return true
+            }
+        })
+    })
+
+    return answer
+}
+```
