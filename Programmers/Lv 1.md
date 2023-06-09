@@ -1093,3 +1093,20 @@ function solution(board, moves) {
     return answer
 }
 ```
+[신규 아이디 추천](https://school.programmers.co.kr/learn/courses/30/lessons/72410) (2021 KAKAO BLIND RECRUITMENT)
+```javascript
+function solution(new_id) {
+    new_id = new_id.toLowerCase()
+                        .replace(/[^a-z\d\-\_\.]/g,'')
+                        .replace(/[.]{2,}/g,'.')
+                        .replace(/^[.]|[.]$/g,'')
+
+    const idLength = new_id.length
+    if(!idLength) new_id = 'a'
+    if(idLength >= 16) new_id = new_id.slice(0, 15).replace(/^[.]|[.]$/g,'')
+    if(idLength <= 2) new_id = new_id.padEnd(3, new_id.at(-1))
+
+
+    return new_id
+}
+```
