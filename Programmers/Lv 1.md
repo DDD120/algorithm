@@ -1110,3 +1110,21 @@ function solution(new_id) {
     return new_id
 }
 ```
+[개인정보 수집 유효기간](https://school.programmers.co.kr/learn/courses/30/lessons/150370) (2023 KAKAO BLIND RECRUITMENT)
+```javascript
+function solution(today, terms, privacies) {
+    const answer = []
+
+    terms.forEach((term) => {
+        privacies.forEach((privacie, i) => {
+            if(term[0] !== privacie.at(-1)) return
+            const date = new Date(privacie.slice(0,10))
+            const addMonth = date.getMonth() + Number(term.split(' ')[1])
+            const setDate = new Date(date.setMonth(addMonth))
+            if(new Date(today) >= setDate) answer.push(i+1)
+        })
+    })
+
+    return answer.sort((a,b) => a-b)
+}
+```
