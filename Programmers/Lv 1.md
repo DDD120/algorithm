@@ -1128,3 +1128,27 @@ function solution(today, terms, privacies) {
     return answer.sort((a,b) => a-b)
 }
 ```
+[신고 결과 받기](https://school.programmers.co.kr/learn/courses/30/lessons/92334) (2022 KAKAO BLIND RECRUITMENT)
+```javascript
+function solution(id_list, report, k) {
+    const count = id_list.reduce((obj, id) => {
+        obj[id] = new Set()
+        return obj
+    }, {})
+
+    report.forEach((re) => {
+        const [user, reportedUser] = re.split(' ')
+        count[reportedUser].add(user)
+    })
+
+    const answer = id_list.map((id) => {
+        let mail = 0
+        for(let c in count){
+            if(count[c].size >= k && count[c].has(id)) mail += 1
+        }
+        return mail
+    })
+
+    return answer
+}
+```
