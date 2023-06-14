@@ -29,3 +29,19 @@ function solution(A,B){
     return answer
 }
  ```
+[올바른 괄호](https://school.programmers.co.kr/learn/courses/30/lessons/12909) (스택/큐)
+  ```javascript
+function solution(s){
+   const stack = []
+
+   for(let char of s){
+        if(char === "(") {
+            stack.push(char)
+        } else {
+            stack.at(-1) === "(" ? stack.pop() : stack.push(char)
+        }
+   }
+
+    return !stack.length
+}
+ ```
