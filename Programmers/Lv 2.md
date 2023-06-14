@@ -45,3 +45,18 @@ function solution(s){
     return !stack.length
 }
  ```
+[이진 변환 반복하기](https://school.programmers.co.kr/learn/courses/30/lessons/70129) (월간 코드 챌린지 시즌1)
+  ```javascript
+function solution(s) {
+    let binary = s
+    const answer = [0,0]
+
+    while(binary !== "1"){
+        answer[0] += 1
+        answer[1] += binary.match(/0/g, '')?.length ?? 0
+        binary = binary.replace(/0/g,'').length.toString(2)
+    }
+
+    return answer
+}
+ ```
