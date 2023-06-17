@@ -70,3 +70,13 @@ function solution(n) {
     return answer
 }
  ```
+[다음 큰 숫자](https://school.programmers.co.kr/learn/courses/30/lessons/12911) (연습 문제)
+  ```javascript
+function solution(n) {
+    let next = n + 1
+    const count = n.toString(2).replace(/0/g, '').length
+    while(count !== next.toString(2).replace(/0/g, '').length) next++
+
+    return next
+}
+ ```
