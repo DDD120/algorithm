@@ -80,3 +80,12 @@ function solution(n) {
     return next
 }
  ```
+[피보나치 수](https://school.programmers.co.kr/learn/courses/30/lessons/12945) (연습 문제)
+  ```javascript
+function solution(n) {
+    const f = [0,1]
+    for(let i=2;i<=n;i++) f[i] = (f[i-1] + f[i-2]) % 1234567
+
+    return f[n]
+}
+ ```
