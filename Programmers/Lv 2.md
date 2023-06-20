@@ -101,3 +101,23 @@ function solution(s){
     return stack.length === 0 ? 1 : 0 
 }
  ```
+[영어 끝말잇기](https://school.programmers.co.kr/learn/courses/30/lessons/12981) (Summer/Winter Coding(~2018))
+  ```javascript
+function solution(n, words) {
+    const answer = [0,0]
+    const pass = new Set([])
+    let last
+
+    words.some((word, i) => {
+        if((last && last !== word[0]) || pass.has(word)){
+            answer[0] = i % n + 1
+            answer[1] = Math.floor(i / n + 1)
+            return true
+        }
+        pass.add(word)
+        last = word.at(-1)
+    })
+
+    return answer
+}
+ ```
