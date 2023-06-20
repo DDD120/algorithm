@@ -89,3 +89,15 @@ function solution(n) {
     return f[n]
 }
  ```
+[짝지어 제거하기](https://school.programmers.co.kr/learn/courses/30/lessons/12973) (2017 팁스타운)
+  ```javascript
+function solution(s){
+    const stack = []
+
+    for(let str of s){
+        stack.at(-1) === str ? stack.pop() : stack.push(str)
+    }
+
+    return stack.length === 0 ? 1 : 0 
+}
+ ```
