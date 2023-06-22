@@ -121,3 +121,20 @@ function solution(n, words) {
     return answer
 }
  ```
+[카펫](https://school.programmers.co.kr/learn/courses/30/lessons/42842) (완전탐색)
+  ```javascript
+function solution(brown, yellow) {
+    const answer = []
+    const size = brown + yellow
+
+    for(let x=1;x<=size;x++){
+        const y = size / x
+        if(size % x === 0 && 2*(x + y - 2) + yellow === size){
+            answer.push(x, y)
+            break
+        }
+    }
+
+    return answer.sort((a,b) => b-a)
+}
+ ```
