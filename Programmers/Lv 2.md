@@ -138,3 +138,17 @@ function solution(brown, yellow) {
     return answer.sort((a,b) => b-a)
 }
  ```
+[예상 대진표](https://school.programmers.co.kr/learn/courses/30/lessons/12985) (2017 팁스타운)
+  ```javascript
+function solution(n,a,b){
+    let answer = 0
+
+    while(a !== b){
+        a = Math.round(a/2)
+        b = Math.round(b/2)
+        answer++
+    }
+
+    return answer
+}
+ ```
