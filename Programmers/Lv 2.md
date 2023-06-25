@@ -152,3 +152,20 @@ function solution(n,a,b){
     return answer
 }
  ```
+[구명보트](https://school.programmers.co.kr/learn/courses/30/lessons/42885) (탐욕법(Greedy))
+  ```javascript
+function solution(people, limit) {
+    let answer = 0
+    let i = 0
+    let j = people.length - 1
+    people.sort((a,b) => a-b)
+
+    while(i <= j){
+        if(people[i] + people[j] <= limit) i++
+        j--
+        answer++
+    }
+
+    return answer
+}
+ ```
