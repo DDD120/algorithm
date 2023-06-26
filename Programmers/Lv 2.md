@@ -169,3 +169,18 @@ function solution(people, limit) {
     return answer
 }
  ```
+[점프와 순간 이동](https://school.programmers.co.kr/learn/courses/30/lessons/12980) (Summer/Winter Coding(~2018))
+  ```javascript
+function solution(n){
+    let answer = 0
+
+    while(n){
+        if(n % 2){
+            n -= 1
+            answer++
+        } else n /= 2
+    }
+
+    return answer
+}
+ ```
