@@ -184,3 +184,25 @@ function solution(n){
     return answer
 }
  ```
+[N개의 최소공배수](https://school.programmers.co.kr/learn/courses/30/lessons/12953) (연습 문제)
+  ```javascript
+function solution(arr) {
+    let answer = arr[0]
+    let gcd = arr[0]
+
+    for(let i=0;i<arr.length-1;i++){
+        let a = answer
+        let b = arr[i+1]
+        let r
+        while(a % b){
+            r = a % b
+            a = b
+            b = r
+        }
+        gcd = b
+        answer *= arr[i+1] / gcd
+    }
+
+    return answer
+}
+ ```
