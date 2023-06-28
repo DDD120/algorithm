@@ -206,3 +206,13 @@ function solution(arr) {
     return answer
 }
  ```
+[멀리 뛰기](https://school.programmers.co.kr/learn/courses/30/lessons/12914) (연습 문제)
+  ```javascript
+function solution(n) {
+    const answer = [1,1,2]
+    for(let i=0;i<= n;i++){
+        answer[i+2] = (answer[i] + answer[i+1]) % 1234567
+    }
+    return answer[n] 
+}
+ ```
