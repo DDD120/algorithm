@@ -216,3 +216,22 @@ function solution(n) {
     return answer[n] 
 }
  ```
+[귤 고르기](https://school.programmers.co.kr/learn/courses/30/lessons/138476) (연습 문제)
+  ```javascript
+function solution(k, tangerine) {
+    let answer = 0
+    let put = 0
+    const sizes = tangerine.reduce((acc, cur) => {
+        acc[cur] = acc[cur] ? acc[cur] + 1 : 1
+        return acc
+    }, {})    
+    const count = Object.values(sizes).sort((a,b) =>b-a)
+    for(let i=0;i<count.length;i++){
+        if(put>=k) break
+        put += count[i]
+        answer++
+    }
+
+    return answer
+}
+ ```
