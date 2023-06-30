@@ -235,3 +235,28 @@ function solution(k, tangerine) {
     return answer
 }
  ```
+[괄호 회전하기](https://school.programmers.co.kr/learn/courses/30/lessons/76502) (월간 코드 챌린지 시즌2)
+  ```javascript
+function solution(s) {
+    let answer = 0
+    const bracket = {
+        "[": "]",
+        "(": ")",
+        "{": "}"
+    }
+    for(let i=0;i<s.length;i++){
+        if(i){
+            const temp = [...s]
+            temp.push(temp.shift())
+            s = temp.join("")
+        }
+        const stack = []
+        for(let char of s){
+            bracket[stack.at(-1)] === char ? stack.pop() : stack.push(char)
+        }
+        if(!stack.length) answer++
+    }
+
+    return answer
+}
+ ```
