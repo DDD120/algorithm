@@ -260,3 +260,13 @@ function solution(s) {
     return answer
 }
  ```
+[H-Index](https://school.programmers.co.kr/learn/courses/30/lessons/42747) (정렬)
+  ```javascript
+function solution(citations) {
+    citations.sort((a,b) => b-a)
+    let answer = 0
+    while(answer < citations[answer]) answer++
+
+    return answer
+}
+ ```
