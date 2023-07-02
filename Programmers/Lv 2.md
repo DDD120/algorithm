@@ -270,3 +270,21 @@ function solution(citations) {
     return answer
 }
  ```
+[연속 부분 수열 합의 개수](https://school.programmers.co.kr/learn/courses/30/lessons/131701) (연습 문제)
+  ```javascript
+function solution(elements) {
+   const answer = new Set([])
+
+   for(let i=1;i<=elements.length;i++){
+       for(let j=0;j<elements.length;j++){
+           let sum = 0
+            for(let k=j;k<j+i;k++){
+                sum += elements[k%elements.length]
+            }
+           answer.add(sum)
+       }
+   }
+
+    return answer.size
+}
+ ```
