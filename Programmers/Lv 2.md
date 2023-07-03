@@ -288,3 +288,15 @@ function solution(elements) {
     return answer.size
 }
  ```
+[n^2 배열 자르기](https://school.programmers.co.kr/learn/courses/30/lessons/87390) (월간 코드 챌린지 시즌3)
+  ```javascript
+function solution(n, left, right) {
+    const arr = []
+    for(let i=Math.floor(left/n);i<=Math.floor(right/n);i++){
+        for(let j=0;j<n;j++){
+           arr.push(j < i ? i+1 : j+1)
+        }
+    }
+    return arr.slice(left%n,left%n+right-left+1)
+}
+ ```
