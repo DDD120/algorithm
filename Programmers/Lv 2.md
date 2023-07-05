@@ -319,4 +319,25 @@ function solution(arr1, arr2) {
   return answer  
 } 
  ```
+[[1차] 캐시](https://school.programmers.co.kr/learn/courses/30/lessons/17680) (2018 KAKAO BLIND RECRUITMENT)
+  ```javascript
+function solution(cacheSize, cities) {
+    let answer = 0
+    const cache = []
 
+    cities.forEach((cityName) => {
+        const city = cityName.toUpperCase()
+        const index = cache.indexOf(city)
+        if(index > -1){
+            cache.splice(index,1)
+            answer += 1
+        } else {
+            if(cache.length === cacheSize) cache.shift()
+            answer += 5
+        }
+        if(cacheSize) cache.push(city)
+    })
+
+    return answer
+}
+ ```
