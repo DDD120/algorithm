@@ -341,3 +341,14 @@ function solution(cacheSize, cities) {
     return answer
 }
  ```
+[의상](https://school.programmers.co.kr/learn/courses/30/lessons/42578) (해시)
+  ```javascript
+function solution(clothes) {
+    const countByType = Object.values(clothes.reduce((acc, cur) => {
+        acc[cur[1]] = acc[cur[1]] ? acc[cur[1]] + 1 : 1
+        return acc
+    },{}))
+
+    return countByType.reduce((acc, cur) => acc *= (1+cur), 1) - 1
+}
+ ```
