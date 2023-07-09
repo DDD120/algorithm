@@ -352,3 +352,15 @@ function solution(clothes) {
     return countByType.reduce((acc, cur) => acc *= (1+cur), 1) - 1
 }
  ```
+[튜플](https://school.programmers.co.kr/learn/courses/30/lessons/64065) (2019 카카오 개발자 겨울 인턴십)
+  ```javascript
+function solution(s) {
+    const count = {}
+    s.match(/[\d]+/g).forEach((char) => {
+        count[char] = count[char] ? count[char] + 1 : 1
+    })
+    const entries = Object.entries(count).sort((a,b) => b[1]-a[1])    
+
+    return entries.map((entrie) => Number(entrie[0]))
+}
+ ```
