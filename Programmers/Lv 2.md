@@ -364,3 +364,19 @@ function solution(s) {
     return entries.map((entrie) => Number(entrie[0]))
 }
  ```
+[할인 행사](https://school.programmers.co.kr/learn/courses/30/lessons/131127) (연습 문제)
+  ```javascript
+function solution(want, number, discount) {
+    let answer = 0
+    for(let i=0;i<discount.length-want.length;i++){
+        const num = [...number]
+        for(let j=i;j<i+10;j++){
+            const index = want.indexOf(discount[j])
+            if(num[index]) num[index]--
+        }
+        if(num.findIndex(n => !!n) === -1) answer++
+    }
+
+    return answer
+}
+ ```
