@@ -380,3 +380,19 @@ function solution(want, number, discount) {
     return answer
 }
  ```
+[기능개발](https://school.programmers.co.kr/learn/courses/30/lessons/42586) (스택/큐)
+  ```javascript
+function solution(progresses, speeds) {
+    const answer = []
+    let last = 0
+    progresses.forEach((progress, index) => {
+        const day = Math.ceil((100-progress) / speeds[index])
+        if(last < day) {
+            answer.push(1)
+            last = day
+        } else answer[answer.length-1]++
+    })
+
+    return answer
+}
+ ```
