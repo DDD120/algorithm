@@ -396,3 +396,21 @@ function solution(progresses, speeds) {
     return answer
 }
  ```
+[프로세스](https://school.programmers.co.kr/learn/courses/30/lessons/42587) (스택/큐)
+  ```javascript
+function solution(priorities, location) {
+    let answer = 0
+
+    while(priorities.length){
+        const p = priorities.shift()
+        location--
+        if(priorities.findIndex(q => q > p) > -1){
+            if(location === -1) location = priorities.length
+            priorities.push(p)
+        } else answer++
+        if(location === -1) break
+    }
+
+    return answer
+}
+ ```
