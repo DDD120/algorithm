@@ -414,3 +414,32 @@ function solution(priorities, location) {
     return answer
 }
  ```
+[[1차] 뉴스 클러스터링](https://school.programmers.co.kr/learn/courses/30/lessons/17677) (2018 KAKAO BLIND RECRUITMENT)
+  ```javascript
+function solution(str1, str2) {
+    const set = (string) => {
+        const arr = []
+        const count = {}
+        for(let i in string){
+            if(+i === string.length-1) break
+            const s = `${string[+i]}${string[+i+1]}`.toUpperCase()
+            if(/^[A-Z]+$/.test(s)){
+                arr.push(s)
+                count[s] = count[s] ? count[s]+1 : 1
+            }
+        }
+        return [arr, count]
+    }
+    const [arrA, countA] = set(str1)
+    const [arrB, countB] = set(str2)
+    const [intersection, union] = [...new Set([...arrA,...arrB])].reduce((acc, cur) => {
+        for(let i=0;i<Math.min(countA[cur] ?? 0,countB[cur] ?? 0);i++) acc[0].push(cur)
+        for(let i=0;i<Math.max(countA[cur] ?? 0,countB[cur] ?? 0);i++) acc[1].push(cur)
+        return acc
+        } , [[], []])
+
+    const J = (intersection.length+union.length) ? intersection.length/union.length : 1
+    
+    return Math.floor(J * 65536)
+}
+ ```
