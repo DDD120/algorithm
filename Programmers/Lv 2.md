@@ -443,3 +443,35 @@ function solution(str1, str2) {
     return Math.floor(J * 65536)
 }
  ```
+[피로도](https://school.programmers.co.kr/learn/courses/30/lessons/87946) (완전탐색)
+  ```javascript
+function solution(k, dungeons) {
+    const getPermutation = (arr, num) => {
+        const results = []
+        if(num === 1) return arr.map((el) => [el])
+        arr.forEach((fixed, index, origin) => {
+            const rest = [...origin.slice(0, index), ...origin.slice(index+1)]
+            const permutations = getPermutation(rest, num-1)
+            const attached = permutations.map((el) => [fixed, ...el])
+            results.push(...attached)
+        })
+        return results
+    }
+    const indexArr = Array.from(Array(dungeons.length).keys())
+    const permutation = getPermutation(indexArr, dungeons.length)
+
+    let answer = 0
+    permutation.forEach((list) => {
+        let max = 0
+        let fatigue = k
+        list.some((index) => {
+            if(fatigue < dungeons[index][0]) return true
+            fatigue -= dungeons[index][1]
+            max++
+            if(max > answer) answer = max
+        }) 
+    })
+
+    return answer
+}
+ ```
