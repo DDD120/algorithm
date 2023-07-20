@@ -475,3 +475,20 @@ function solution(k, dungeons) {
     return answer
 }
  ```
+[타겟 넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165) (깊이/너비 우선 탐색(DFS/BFS))
+  ```javascript
+function solution(numbers, target) {
+    let answer = 0
+    function DFS(level, sum) {
+        if (level === numbers.length) {
+            if (sum === target) answer++
+        } else {
+            DFS(level+1, sum+numbers[level])
+            DFS(level+1, sum-numbers[level])
+        }
+    }
+    DFS(0, 0)
+
+    return answer 
+}
+ ```
