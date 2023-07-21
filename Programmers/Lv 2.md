@@ -492,3 +492,21 @@ function solution(numbers, target) {
     return answer 
 }
  ```
+[k진수에서 소수 개수 구하기](https://school.programmers.co.kr/learn/courses/30/lessons/92335) (2022 KAKAO BLIND RECRUITMENT)
+  ```javascript
+function solution(n, k) {
+    const arr = n.toString(k).split("0").filter((n) => n !== "" && n !== "0" && n !== "1")
+    const answer = arr.filter(value => {
+        let isPrime = true
+        for(let i=2;i<=Math.sqrt(value);i++){
+            if(!(value%i)) {
+                isPrime = false 
+                break
+            }
+        }
+        return isPrime
+    }).length
+
+    return answer
+}
+ ```
