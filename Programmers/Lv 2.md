@@ -510,3 +510,26 @@ function solution(n, k) {
     return answer
 }
  ```
+[[3차] 압축](https://school.programmers.co.kr/learn/courses/30/lessons/17684) (2018 KAKAO BLIND RECRUITMENT)
+  ```javascript
+function solution(msg) {
+    const answer = []
+    const dictionary = new Map()
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for(let i in alphabet) dictionary.set(alphabet[i],+i+1)
+
+    while(msg.length){
+        let w = ""
+        for(let i=1;i<=msg.length;i++){
+            const str = msg.slice(0,i)
+            if(!dictionary.has(str)) break
+            w = str
+        }
+        msg = msg.slice(w.length)
+        answer.push(dictionary.get(w))
+        dictionary.set(w+msg[0], dictionary.size+1)
+    }
+
+    return answer
+}
+ ```
