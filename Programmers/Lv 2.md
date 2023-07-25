@@ -533,3 +533,15 @@ function solution(msg) {
     return answer
 }
  ```
+[[3차] n진수 게임](https://school.programmers.co.kr/learn/courses/30/lessons/17687) (2018 KAKAO BLIND RECRUITMENT)
+  ```javascript
+function solution(n, t, m, p) {
+    let answer = ''
+    let str = ''
+
+    for(let i=0;i<t*m;i++) str += i.toString(n)
+    for(let i=0;i<t;i++) answer += str[m*i+p-1]
+
+    return answer.toUpperCase()
+}
+ ```
