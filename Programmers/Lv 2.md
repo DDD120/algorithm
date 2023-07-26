@@ -545,3 +545,27 @@ function solution(n, t, m, p) {
     return answer.toUpperCase()
 }
  ```
+[주차 요금 계산](https://school.programmers.co.kr/learn/courses/30/lessons/92341) (2022 KAKAO BLIND RECRUITMENT)
+  ```javascript
+function solution(fees, records) {
+    const timesByCar = records.reduce((acc, cur) => {
+        const licensePlate = cur.slice(6,10)
+        const time = cur.slice(0,5)
+        acc[licensePlate] =  acc[licensePlate] ? [...acc[licensePlate], time]  : [time]
+        return acc
+    }, {})
+    const feeByCar = {}
+    for(let licensePlate in timesByCar){
+        const fee = timesByCar[licensePlate].reduce((acc, cur, index, origin) => {
+            if(index%2) return acc
+            const [inHour, inSecond] = cur.split(":")
+            const [outHour, outSecond] = origin[index+1] ? origin[index+1].split(":") : [23,59] 
+            return acc += (outHour-inHour)*60 + (outSecond-inSecond)
+        }, 0)        
+        const condition = fee <= fees[0] ? 0 : Math.ceil((fee-fees[0])/fees[2])*fees[3]
+        feeByCar[licensePlate] = fees[1] + condition
+    }
+
+    return Object.entries(feeByCar).sort((a,b) => a[0]-b[0]).map(a => a[1])
+}
+ ```
