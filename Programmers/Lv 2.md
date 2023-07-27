@@ -569,3 +569,11 @@ function solution(fees, records) {
     return Object.entries(feeByCar).sort((a,b) => a[0]-b[0]).map(a => a[1])
 }
  ```
+[전화번호 목록](https://school.programmers.co.kr/learn/courses/30/lessons/42577) (해시)
+  ```javascript
+function solution(phone_book) {
+    return !phone_book.sort().some((phone, i) => {
+        if(phone_book[i+1]) return phone_book[i+1].startsWith(phone)
+    })
+} 
+ ```
