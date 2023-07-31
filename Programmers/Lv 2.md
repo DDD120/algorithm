@@ -577,3 +577,79 @@ function solution(phone_book) {
     })
 } 
  ```
+[더 맵게](https://school.programmers.co.kr/learn/courses/30/lessons/42626) (힙(Heap))
+  ```javascript
+class MinHeap {
+    constructor() {
+        this.heap = []
+    }
+    size() {
+        return this.heap.length
+    }
+    getParentIndex(childIndex) {
+        return Math.floor((childIndex-1) / 2)
+    }
+    getLeftChildIndex(parentIndex) {
+        return parentIndex*2 + 1
+    }
+    getRightChildIndex(parentIndex) {
+        return parentIndex*2 + 2
+    }
+    swap(index1, index2){
+        [this.heap[index1], this.heap[index2]] = [this.heap[index2], this.heap[index1]]
+        return this.heap
+    }
+    heappop(){
+        const heapSize = this.size()
+        if (!heapSize) return null
+        if (heapSize === 1) return this.heap.pop()
+        const value = this.heap[0]
+        this.heap[0] = this.heap.pop()
+        this.bubbledown()
+        return value
+    }
+    heappush(value){
+        this.heap.push(value)
+        this.bubbleup()
+    }
+    bubbleup(){
+        let child = this.size()-1
+        let parent = this.getParentIndex(child)
+        while(this.heap[child] < this.heap[parent]){
+            this.swap(child, parent)
+            child = parent
+            parent = this.getParentIndex(parent)
+        }
+    }
+    bubbledown(){
+        let parent = 0
+        let leftChild = this.getLeftChildIndex(parent)
+        let rightChild = this.getRightChildIndex(parent)
+        while((leftChild <= this.size()-1 && this.heap[leftChild] < this.heap[parent]) || 
+              (rightChild <= this.size()-1 && this.heap[rightChild] < this.heap[parent])){
+            if (rightChild <= this.size()-1 && this.heap[leftChild] > this.heap[rightChild]){
+                this.swap(parent, rightChild)
+                parent = rightChild
+            } else {
+                this.swap(parent, leftChild)
+                parent = leftChild
+            }
+            leftChild = this.getLeftChildIndex(parent)
+            rightChild = this.getRightChildIndex(parent)
+        }     
+    }
+}
+
+function solution(scoville, K) {
+    let answer = 0
+    const h = new MinHeap()
+    scoville.forEach(s => h.heappush(s))
+
+    while(h.heap[0] < K && h.size() > 1){
+        h.heappush(h.heappop() + (h.heappop() * 2))
+        answer++
+    }
+
+    return h.heap[0] >= K ? answer : -1
+}
+ ```
