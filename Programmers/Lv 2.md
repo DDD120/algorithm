@@ -653,3 +653,23 @@ function solution(scoville, K) {
     return h.heap[0] >= K ? answer : -1
 }
  ```
+ ```
+[오픈채팅방](https://school.programmers.co.kr/learn/courses/30/lessons/42888) (2019 KAKAO BLIND RECRUITMENT)
+  ```javascript
+function solution(record) {
+    const answer = []
+    const map = record.reduce((acc, cur) => {
+        const [act, id, nickname] = cur.split(' ')
+        if(nickname) acc[id] = nickname
+        return acc
+    }, {})
+
+    record.forEach(r => {
+        const [act, id] = r.split(' ')
+        if(act === "Enter") answer.push(map[id] + "님이 들어왔습니다.")
+        if(act === "Leave") answer.push(map[id] + "님이 나갔습니다.")
+    })
+
+    return answer
+}
+ ```
