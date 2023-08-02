@@ -686,3 +686,21 @@ function solution(land) {
     return Math.max(...land.at(-1))
 }
  ```
+[주식가격](https://school.programmers.co.kr/learn/courses/30/lessons/42584) (스택/큐)
+ ```javascript
+function solution(prices) {
+    const answer = []
+    for(let i=0;i<prices.length;i++){
+        let seconds = prices.length-i-1
+        for(let j=i+1;j<prices.length-1;j++){
+            if(prices[j] < prices[i]) {
+                seconds = j-i
+                break
+            }
+        }
+        answer.push(seconds)
+    }
+
+    return answer
+}
+ ```
