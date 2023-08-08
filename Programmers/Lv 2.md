@@ -704,3 +704,24 @@ function solution(prices) {
     return answer
 }
  ```
+[게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844) (깊이/너비 우선 탐색(DFS/BFS))
+ ```javascript
+function solution(maps) {
+    const queue = [[0,0]]
+    const move = [[1,0],[0,1],[0,-1],[-1,0]]
+    const [n,m] = [maps.length-1, maps[0].length-1]
+    while(queue.length){
+        if(maps[n][m] > 1) break
+        const [nowY, nowX] = queue.shift()
+        for(let i=0;i<4;i++){
+            const [nextY, nextX] = [nowY+move[i][0], nowX+move[i][1]]
+            if(maps[nextY]?.[nextX] === 1){
+                maps[nextY][nextX] = maps[nowY][nowX] + 1
+                queue.push([nextY,nextX])
+           }
+        }
+    }
+
+    return maps[n][m] === 1 ? -1 : maps[n][m]
+}
+ ```
