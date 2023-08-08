@@ -725,3 +725,32 @@ function solution(maps) {
     return maps[n][m] === 1 ? -1 : maps[n][m]
 }
  ```
+[방문 길이](https://school.programmers.co.kr/learn/courses/30/lessons/49994) (Summer/Winter Coding(~2018))
+ ```javascript
+function solution(dirs) {
+    let answer = 0
+    const move = [[0,0]]
+    for(let char of dirs){
+        const [x,y] = move.at(-1)
+        if(char === "U") if(y+1 <= 5) move.push([x,y+1])
+        if(char === "D") if(y-1 >= -5) move.push([x,y-1])
+        if(char === "R") if(x+1 <= 5) move.push([x+1,y])
+        if(char === "L") if(x-1 >= -5) move.push([x-1,y])
+    }
+    for(let i=0;i<move.length-1;i++){
+        const way1 = move.slice(i,i+2).sort()
+        let pass = true
+        for(let j=0;j<i;j++){
+            const way2 = move.slice(j,j+2).sort()
+            const condition = way1[0][0] == way2[0][0] && 
+                  way1[0][1] == way2[0][1] && 
+                  way1[1][0] == way2[1][0] && 
+                  way1[1][1] == way2[1][1]
+            if(condition) pass = false
+        }
+        if(pass) answer += 1
+    }
+
+   return answer
+}
+ ```
