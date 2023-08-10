@@ -754,3 +754,15 @@ function solution(dirs) {
    return answer
 }
  ```
+[스킬트리](https://school.programmers.co.kr/learn/courses/30/lessons/49993) (Summer/Winter Coding(~2018))
+ ```javascript
+function solution(skill, skill_trees) {
+    let answer = 0
+     skill_trees.forEach(tree => {
+         const regexp = new RegExp(`[^${skill}]+`, 'g')
+         if(skill.startsWith(tree.replace(regexp, ''))) answer++
+     })
+
+    return answer
+}
+ ```
