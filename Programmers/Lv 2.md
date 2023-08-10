@@ -766,3 +766,15 @@ function solution(skill, skill_trees) {
     return answer
 }
  ```
+[모음사전](https://school.programmers.co.kr/learn/courses/30/lessons/84512) (완전탐색)
+ ```javascript
+function solution(word) {
+    let answer = 0
+    const score = { 'A': 0,'E': 1,'I': 2,'O': 3,'U': 4 }
+    for(let i=0;i<word.length;i++){
+        answer += score[word[i]] * ((5**(5-i)-1)/4) + 1
+    }
+
+    return answer
+}
+ ```
