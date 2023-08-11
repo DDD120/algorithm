@@ -778,3 +778,19 @@ function solution(word) {
     return answer
 }
  ```
+[뒤에 있는 큰 수 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/154539) (연습문제)
+ ```javascript
+function solution(numbers) {
+    const answer = []
+    const stack = []
+    for(let i=0;i<numbers.length;i++){
+        while(stack.length && numbers[stack.at(-1)] < numbers[i]){
+                answer[stack.pop()] = numbers[i]
+        }
+        stack.push(i)
+    }
+    stack.forEach((i) => answer[i] = -1)
+
+    return answer
+}
+ ```
