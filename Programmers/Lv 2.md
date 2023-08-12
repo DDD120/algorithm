@@ -808,3 +808,41 @@ function solution(files) {
     return files
 }
  ```
+[[1차] 프렌즈4블록](https://school.programmers.co.kr/learn/courses/30/lessons/17679) (2018 KAKAO BLIND RECRUITMENT)
+ ```javascript
+function solution(m, n, board) {
+    let answer = 0
+    board = board.map((b) => b.split(''))
+    while(true){
+        const same = Array.from(new Array(m), () => new Array(n).fill(false))
+        board.forEach((b, x) => {
+            for(let y in b){
+                if(b[y] !== ' ' && 
+                   b[y] === b[+y+1] && 
+                   b[y] === board[x+1]?.[y] &&
+                   b[y] === board[x+1]?.[+y+1]){
+                    same[x][y] = true
+                    same[x][+y+1] = true
+                    same[x+1][y] = true
+                    same[x+1][+y+1] = true
+                }
+            } 
+        })
+        if(!same.flat().some((n) => n)) break
+        same.forEach(s => s.forEach((b) => { if(b) answer += 1 }))
+        board.forEach((b, index) => { for(let i in b) if(same[index][i]) b[i] = ' ' })
+        for(let re=0;re<m-1;re++){
+            for(let x=0;x<m-1;x++){
+                for(let y=0;y<n;y++){
+                    if(board[x][y] !== ' ' && board[x+1][y] === ' '){
+                        board[x+1][y] = board[x][y]
+                        board[x][y] = ' '
+                    } 
+                }
+            }
+        }
+    }
+
+    return answer
+}
+ ```
