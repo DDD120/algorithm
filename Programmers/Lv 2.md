@@ -794,3 +794,17 @@ function solution(numbers) {
     return answer
 }
  ```
+[[3차] 파일명 정렬](https://school.programmers.co.kr/learn/courses/30/lessons/17686) (2018 KAKAO BLIND RECRUITMENT)
+ ```javascript
+function solution(files) {
+    files.sort((a,b) => {
+        a = a.toLowerCase().match(/([a-z-\s.]+|\d+)/g)
+        b = b.toLowerCase().match(/([a-z-\s.]+|\d+)/g)
+        if(a[0] < b[0]) return -1
+        if(a[0] > b[0]) return 1
+        if(+a[1] < +b[1]) return -1
+        if(+a[1] > +b[1]) return 1
+    })
+    return files
+}
+ ```
