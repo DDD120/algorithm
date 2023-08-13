@@ -846,3 +846,20 @@ function solution(m, n, board) {
     return answer
 }
  ```
+[롤케이크 자르기](https://school.programmers.co.kr/learn/courses/30/lessons/132265) (연습문제)
+ ```javascript
+function solution(topping) {
+    let answer = 0
+    const left = new Map()
+    const right = new Map()
+    topping.forEach(t => right.set(t, right.get(t) ? right.get(t)+1 : 1))
+    topping.forEach(t => {
+        right.set(t, right.get(t)-1)
+        if(!right.get(t)) right.delete(t)
+        left.set(t, left.get(t) ? left.get(t)+1 : 1)
+        if(left.size === right.size) answer++
+    })
+
+    return answer
+}
+ ```
