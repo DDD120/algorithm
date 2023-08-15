@@ -863,3 +863,22 @@ function solution(topping) {
     return answer
 }
  ```
+[숫자 변환하기](https://school.programmers.co.kr/learn/courses/30/lessons/154538) (연습문제)
+ ```javascript
+function solution(x, y, n) {
+    let answer = -1
+    const queue = [[y, 0]]
+    while(queue.length){
+        const [y, num] = queue.shift()
+        if(x === y){
+            answer = num
+            break
+        }
+        if(y % 2 === 0) queue.push([y/2, num+1]) 
+        if(y % 3 === 0) queue.push(([y/3, num+1])) 
+        if(y - n >= x) queue.push([y-n, num+1]) 
+    }
+
+    return answer
+}
+ ```
