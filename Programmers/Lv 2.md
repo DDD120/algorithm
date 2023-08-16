@@ -882,3 +882,13 @@ function solution(x, y, n) {
     return answer
 }
  ```
+[2 x n 타일링](https://school.programmers.co.kr/learn/courses/30/lessons/12900) (연습문제)
+ ```javascript
+function solution(n) {
+  const f = [1,1]
+  for(let i=2;i<=n;i++) f[i] = (f[i-1] + f[i-2]) % 1000000007
+
+  return f[n]
+}
+ ```
+
