@@ -891,4 +891,16 @@ function solution(n) {
   return f[n]
 }
  ```
-
+[2개 이하로 다른 비트](https://school.programmers.co.kr/learn/courses/30/lessons/77885) (월간 코드 챌린지 시즌2)
+ ```javascript
+function solution(numbers) {
+    return numbers.map(number => {
+        if(number % 2 === 0) return number+1
+        else {
+            const b = number.toString(2).padStart(32,0).split('')
+            b.splice(b.lastIndexOf('0'),2,1,0)
+            return parseInt(b.join(''), 2)
+        }
+    })
+}
+ ```
