@@ -904,3 +904,27 @@ function solution(numbers) {
     })
 }
  ```
+[다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583) (스택/큐)
+ ```javascript
+function solution(bridge_length, weight, truck_weights) {
+    let answer = 1
+    const queue = [[truck_weights.shift(), 1]]
+    let currentWeight = queue[0][0]
+
+    while(queue.length){
+        while(queue[0]?.[1] >= bridge_length){
+            currentWeight -= queue[0][0]
+            queue.shift()
+        }
+        const truck = truck_weights[0]
+        if(queue.length <= bridge_length && currentWeight + truck <= weight){
+            currentWeight += truck
+            queue.push([truck_weights.shift(), 0])
+        }
+        queue.forEach(q => q[1] = q[1]+1)
+        answer++
+    }
+
+    return answer
+}
+ ```
