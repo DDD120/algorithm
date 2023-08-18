@@ -928,3 +928,29 @@ function solution(bridge_length, weight, truck_weights) {
     return answer
 }
  ```
+[택배상자](https://school.programmers.co.kr/learn/courses/30/lessons/131704) (연습문제)
+ ```javascript
+function solution(order) {
+    let answer = 0
+    const belt = Array.from({length: order.length}, (_,i) => order.length-i)
+    const assistant = []
+
+    for(let i in order){
+        while(true){
+            if(order[i] === belt.at(-1)){
+                answer++
+                belt.pop()
+                break
+            } else if(order[i] === assistant.at(-1)){
+                answer++
+                assistant.pop()
+                break
+            } else assistant.push(belt.pop())
+            if(!belt.length && order[i] !== assistant.at(-1)) break
+        }
+    }
+
+    return answer
+}
+
+ ```
