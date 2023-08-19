@@ -952,5 +952,15 @@ function solution(order) {
 
     return answer
 }
-
+ ```
+[가장 큰 수](https://school.programmers.co.kr/learn/courses/30/lessons/42746) (정렬)
+ ```javascript
+function solution(numbers) {
+    numbers.sort((a,b) => {
+        a = a.toString(), b = b.toString()
+        return (a+b) > (b+a) ? -1 : 1
+    })
+    const answer = numbers.join('')
+    return +answer ? answer : '0'
+}
  ```
