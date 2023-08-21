@@ -964,3 +964,36 @@ function solution(numbers) {
     return +answer ? answer : '0'
 }
  ```
+[소수 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/42839) (완전탐색)
+ ```javascript
+function solution(numbers) {
+    numbers = numbers.split('')
+    const getPermutations = (arr, num) => {
+        const results = []
+        if (num === 1) return arr.map(el => el);
+        arr.forEach((fixed, index, origin) => {
+          const rest = [...origin.slice(0, index), ...origin.slice(index+1)] 
+          const permutations = getPermutations(rest, num-1)
+          const attached = permutations.map(el => fixed+el)
+          results.push(...attached)
+        })
+        return results
+    }
+    const permutations = []
+    for(let i in numbers) permutations.push(...getPermutations(numbers, +i+1))
+    let answer = 0
+    new Set(permutations.map(p => +p)).forEach(p => {
+        let isPrime = true
+        if(p === 0 || p === 1) isPrime = false
+        for(let i=2;i<=p/2;i++){
+            if(p % i === 0){
+                isPrime = false
+                break
+            }
+        }
+        if(isPrime) answer += 1
+    })
+
+    return answer
+}
+ ```
