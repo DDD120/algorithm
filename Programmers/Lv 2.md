@@ -997,3 +997,19 @@ function solution(numbers) {
     return answer
 }
  ```
+[쿼드압축 후 개수 세기](https://school.programmers.co.kr/learn/courses/30/lessons/68936) (월간 코드 챌린지 시즌1)
+ ```javascript
+function solution(arr) {
+    const answer = [0,0]
+    function quad(arr, len){
+        if(arr.flat().every(cell => cell === 0)) return answer[0]++
+        if(arr.flat().every(cell => cell === 1)) return answer[1]++
+        quad(arr.slice(0, len/2).map(row => row.slice(0, len/2)), len/2)
+        quad(arr.slice(0, len/2).map(row => row.slice(len/2)), len/2)
+        quad(arr.slice(len/2).map(row => row.slice(0, len/2)), len/2)
+        quad(arr.slice(len/2).map(row => row.slice(len/2)), len/2)
+    }
+    quad(arr, arr.length)
+    return answer
+}
+ ```
