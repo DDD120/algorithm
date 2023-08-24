@@ -1013,3 +1013,23 @@ function solution(arr) {
     return answer
 }
  ```
+[삼각 달팽이](https://school.programmers.co.kr/learn/courses/30/lessons/68645) (월간 코드 챌린지 시즌1)
+ ```javascript
+function solution(n) {
+    const answer = []
+    let x = 0, y = 0, index = 1
+    for(let i=0;i<n;i++) answer.push(new Array(i+1).fill(0))
+    while(index <= (n/2+0.5)*n){
+        while(x < n && !answer[x][y]) answer[x++][y] = index++
+        x--
+        y++
+        while(y < n && !answer[x][y]) answer[x][y++] = index++
+        x--
+        y-= 2
+        while(x > 0 && y > 0 && !answer[x][y]) answer[x--][y--] = index++
+        x += 2
+        y += 1
+    }
+    return answer.flat()
+}
+ ```
