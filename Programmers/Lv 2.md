@@ -1033,3 +1033,22 @@ function solution(n) {
     return answer.flat()
 }
  ```
+[큰 수 만들기](https://school.programmers.co.kr/learn/courses/30/lessons/42883) (탐욕법(Greedy))
+ ```javascript
+function solution(number, k) {
+    const num = number.split('').reverse()
+    const answer = [num.pop()]
+    let index = 0
+    while(num.length){
+        while(index < k && answer.at(-1) < num.at(-1)){
+            answer.pop()
+            index++
+        }
+        answer.push(num.pop())
+    }
+    const len = k - (number.length - answer.length)
+    for(let i=0;i<len;i++) answer.pop()
+    
+    return answer.join('')
+}
+ ```
