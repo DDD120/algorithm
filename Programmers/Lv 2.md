@@ -1052,3 +1052,17 @@ function solution(number, k) {
     return answer.join('')
 }
  ```
+[124 나라의 숫자](https://school.programmers.co.kr/learn/courses/30/lessons/12899) (연습문제)
+ ```javascript
+function solution(n) {
+    const answer = []
+    while(n !== 0){
+        const quotient = Math.floor(n / 3)
+        const remainder = n % 3
+        answer.push(remainder === 0 ? 4 : remainder)
+        n = remainder === 0 ? quotient - 1 : quotient
+    }
+
+    return answer.reverse().join('')
+}
+ ```
