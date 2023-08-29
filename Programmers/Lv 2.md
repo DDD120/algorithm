@@ -1066,3 +1066,36 @@ function solution(n) {
     return answer.reverse().join('')
 }
  ```
+[두 큐 합 같게 만들기](https://school.programmers.co.kr/learn/courses/30/lessons/118667) (2022 KAKAO TECH INTERNSHIP)
+ ```javascript
+function solution(queue1, queue2) {
+    let answer = 0
+    let index1 = 0, index2 = 0
+    let sum1 = queue1.reduce((acc, cur) => acc += cur , 0)
+    let sum2 = queue2.reduce((acc, cur) => acc += cur , 0)
+    const condition =  (queue1.length + queue2.length) * 3
+
+    while(sum1 !== sum2){
+        if(answer > condition){
+            answer = -1
+            break 
+        }
+        if(sum1 > sum2){
+            const num = queue1[index1]
+            index1++
+            queue2.push(num)
+            sum1 -= num
+            sum2 += num
+        } else {
+            const num = queue2[index2]
+            index2++
+            queue1.push(num)
+            sum1 += num
+            sum2 -= num
+        }
+        answer++
+    }
+
+    return answer
+}
+ ```
