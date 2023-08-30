@@ -1099,3 +1099,23 @@ function solution(queue1, queue2) {
     return answer
 }
  ```
+[연속된 부분 수열의 합](https://school.programmers.co.kr/learn/courses/30/lessons/178870) (연습문제)
+ ```javascript
+function solution(sequence, k) {
+    const sumSequence = []
+    for(let s of sequence) sumSequence.push((sumSequence.at(-1) ?? 0) + s)
+    let answer
+    let left = 0, right = 0
+    while(left <= right){
+        const sum = sumSequence[right]-(sumSequence[left-1] ?? 0)
+        if(sum === k) {
+            if(!answer || right-left < answer[1]-answer[0]) {
+                answer = [left, right]
+            }
+        }
+        sum < k ? right++ : left++
+    }
+
+    return answer
+}
+ ```
