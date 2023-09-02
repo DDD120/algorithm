@@ -1119,3 +1119,50 @@ function solution(sequence, k) {
     return answer
 }
  ```
+[메뉴 리뉴얼](https://school.programmers.co.kr/learn/courses/30/lessons/72411) (2021 KAKAO BLIND RECRUITMENT)
+ ```javascript
+function solution(orders, course) {
+    function getCombination(arr, num){
+        const results = []
+        if(num === 1) return arr.map(el => [el])
+        arr.forEach((fixed, index, origin) => {
+            const rest = origin.slice(index+1)
+            const combin = getCombination(rest, num-1)
+            const attached = combin.map((c) => [fixed, ...c].sort().join(''))
+            results.push(...attached) 
+        })
+        return results
+    }
+    const combins = new Set(orders.reduce((acc, cur) => {
+        for(let i of course) acc.push(...getCombination(cur.split(''), i))
+        return acc
+    }, []))
+
+    const orderCount = new Map()
+    combins.forEach(combin => {
+        const combinArray = combin.split('')
+        orders.forEach(order => {
+            if(combinArray.every(c => order.includes(c))) {
+                const getCombin = orderCount.get(combin)
+                orderCount.set(combin, getCombin ? getCombin + 1 : 1)
+            }
+        })
+    })
+
+    const rank = [...orderCount.entries()].filter((r) => r[1] > 1).sort((a,b) =>b[1]-a[1])
+    const regular = new Map()
+    rank.forEach((r) => {
+        const courseCount = r[0].length
+        if((regular.get(courseCount)?.[0][1] ?? 0) <= r[1]){
+            if(regular.get(courseCount)?.[0][1] === r[1]){
+                return regular.set(courseCount, [...regular.get(courseCount),r])
+            }
+            regular.set(courseCount, [r])
+        }
+    })
+    const answer = []
+    for(let value of regular.values()) answer.push(...value.map((v) => v[0]))
+
+    return answer.sort()
+}
+ ```
