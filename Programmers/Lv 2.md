@@ -1166,3 +1166,38 @@ function solution(orders, course) {
     return answer.sort()
 }
  ```
+[무인도 여행](https://school.programmers.co.kr/learn/courses/30/lessons/154540) (연습문제)
+ ```javascript
+function solution(maps) {
+    maps = maps.map(map => map.split(''))
+    const answer = []
+    const dir = [[-1,0], [0,1], [1,0], [0,-1]]
+
+    const [row, col] = [maps.length-1,maps[0].length-1]
+    for (let i=0;i<=row;i++) {
+        for (let j=0;j<=col;j++) {
+            let square = maps[i][j]
+            if (square === 'X') continue
+            maps[i][j] = 'X'
+            square = +square
+            const queue = [[i, j]]
+            while(queue.length){
+                const [r, c] = queue.shift()
+                for(let i=0;i<4;i++) {
+                    const [nr, nc] = [r + dir[i][0], c + dir[i][1]]
+                    if (0 > nr || nr > row || 0 > nc || nc > col) continue
+                    const ns = maps[nr][nc]
+                    if (ns === 'X') continue
+                    maps[nr][nc] = 'X'
+                    square += +ns
+                    queue.push([nr, nc])
+                }
+            }
+            answer.push(square)
+        }
+    }
+
+    return answer.length ? answer.sort((a,b) => a-b) : [-1]
+}
+
+ ```
