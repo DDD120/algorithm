@@ -1199,5 +1199,25 @@ function solution(maps) {
 
     return answer.length ? answer.sort((a,b) => a-b) : [-1]
 }
+ ```
+[[3차] 방금그곡](https://school.programmers.co.kr/learn/courses/30/lessons/17683) (2018 KAKAO BLIND RECRUITMENT)
+ ```javascript
+function solution(m, musicinfos) {
+    let answer
+     m = m.replace(/(C|D|F|G|A)#/g, (_, s) => s.toLowerCase())
+    musicinfos.forEach((musicinfo) => {
+        const [start, end, title, score] = musicinfo.split(',')
+        const hour = end.slice(0,2)-start.slice(0,2)
+        const playingTime = (hour*60 + +(end.slice(3,5)))-start.slice(3,5)
+        const rScore = score.replace(/(C|D|F|G|A)#/g, (_, s) => s.toLowerCase())
+        const playingScore = ''.padEnd(playingTime, rScore)
+        const regexp = new RegExp(`${m}(?!#)`)
+        const index = playingScore.match(regexp)?.index
+        if(index > -1 && playingScore[index+m.length] !== '#'){
+            if((answer?.[1] ?? 0) < playingTime) answer = [title, playingTime]
+        }
+    })
 
+    return answer ? answer[0] : "(None)"
+}
  ```
