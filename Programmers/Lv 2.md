@@ -1221,3 +1221,43 @@ function solution(m, musicinfos) {
     return answer ? answer[0] : "(None)"
 }
  ```
+[괄호 변환](https://school.programmers.co.kr/learn/courses/30/lessons/60058) (2020 KAKAO BLIND RECRUITMENT)
+ ```javascript
+function isValid(u){
+    const stack = [u[0]]
+    for(let i=1;i<u.length;i++){
+        if(stack.at(-1) === "(" && u[i] === ")") stack.pop() 
+        else stack.push(u[i])
+    }
+    return stack.length ? false : true
+}
+
+function solution(p){
+    function setValidParentheses(w){
+        if(w === "") return ""
+        let u = ""
+        let [left, right] = [0,0]
+        for(let i=0;i<w.length;i++){
+            if(w[i] === "("){
+                left++
+                u+= "("
+            } else {
+                right++
+                u+= ")"
+            }
+            if(left === right) break
+        }
+        const v = w.slice(u.length)
+        const join = setValidParentheses(v)
+        if(isValid(u)) return u + join
+        else {
+            const s = [...u.slice(1,u.length-1)]
+                .map((char) => char === "(" ? ")" : "(").join("")
+            return `(${join})` + s
+        }
+        return v
+    }
+
+    return setValidParentheses(p)
+}
+ ```
