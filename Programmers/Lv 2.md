@@ -1261,3 +1261,24 @@ function solution(p){
     return setValidParentheses(p)
 }
  ```
+[전력망을 둘로 나누기](https://school.programmers.co.kr/learn/courses/30/lessons/86971) (완전탐색)
+ ```javascript
+function solution(n, wires) {
+    let answer = n
+    wires.forEach((wire) => {
+        const except = wires.filter((w) => w !== wire)
+        const A = [wire[0]]
+        const B = [wire[1]]
+        while(except.length){
+            const wire = except.shift()
+            if(wire.some(w => A.includes(w))) A.push(...wire)
+            else if(wire.some(w => B.includes(w))) B.push(...wire)
+            else except.push(wire)
+        }
+        const diff = Math.abs(new Set(A).size - new Set(B).size)
+        if(diff < answer) answer = diff
+    })
+
+    return answer
+}
+ ```
