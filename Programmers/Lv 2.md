@@ -1282,3 +1282,26 @@ function solution(n, wires) {
     return answer
 }
  ```
+[수식 최대화](https://school.programmers.co.kr/learn/courses/30/lessons/67257) (2020 카카오 인턴십)
+ ```javascript
+function solution(expression) {
+    const combination = ['+-*', '-+*', '+*-', '-*+', '*+-', '*-+']
+    const answer = combination.map(combin => {
+        const exp = expression.match(/\d+|\D/g)
+        for(let c of combin){
+            while(exp.includes(c)){
+                const index = exp.indexOf(c)
+                let calc
+                if(c === '+') calc = +exp[index-1] + +exp[index+1]
+                if(c === '-') calc = exp[index-1] - exp[index+1]
+                if(c === '*') calc = exp[index-1] * exp[index+1]
+                exp.splice(index-1, 3, calc)
+            }
+        }
+        return Math.abs(exp[0])
+    })
+
+    return Math.max(...answer)
+}
+ ```
+
