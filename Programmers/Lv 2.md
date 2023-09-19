@@ -1304,4 +1304,31 @@ function solution(expression) {
     return Math.max(...answer)
 }
  ```
+[행렬 테두리 회전하기](https://school.programmers.co.kr/learn/courses/30/lessons/77485) (2021 Dev-Matching: 웹 백엔드 개발자(상반기))
+ ```javascript
+function solution(rows, columns, queries) {
+    const matrix = []
+    for(let index=0;index<rows;index++){
+        matrix.push(Array.from({length: columns},(_,i)=>(i+1)+(columns*index)))
+    }
+    const answer = queries.map((q) => {
+        const [x1,y1,x2,y2] = [--q[0],--q[1],--q[2],--q[3]]
+        let min = matrix[x1][y1]
+        let prev = matrix[x1][y1]
+        function move(x,y){
+            const temp = matrix[x][y]
+            matrix[x][y] = prev
+            if(prev < min) min = prev 
+            prev = temp
+        }
+        for(let i=0;i<y2-y1;i++) move(x1,y1+i+1)
+        for(let i=0;i<x2-x1;i++) move(x1+i+1,y2)
+        for(let i=0;i<y2-y1;i++) move(x2,y2-i-1)
+        for(let i=0;i<x2-x1;i++) move(x2-i-1,y1)
 
+        return min
+    })
+
+    return answer
+}
+ ```
