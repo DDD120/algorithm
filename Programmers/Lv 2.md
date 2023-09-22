@@ -1332,3 +1332,24 @@ function solution(rows, columns, queries) {
     return answer
 }
  ```
+[호텔 대실](https://school.programmers.co.kr/learn/courses/30/lessons/155651) (연습 문제)
+ ```javascript
+function solution(book_time) {
+    const rooms = []
+    const time = (s) => +s.slice(0,2)*60 + +s.slice(3,5)
+    book_time = book_time.map(book => [time(book[0]),time(book[1])+10])
+        .sort((a,b) => a[0]-b[0] || a[1]-b[1])
+    book_time.forEach(book => {
+        let index
+        const isValid = rooms.some((room, i) => {
+            if(room.at(-1)[1] <= book[0]){
+                index = i
+                return true
+            }
+        })
+        isValid ? rooms[index].push(book) : rooms.push([book])
+    })
+
+    return rooms.length
+}
+ ```
