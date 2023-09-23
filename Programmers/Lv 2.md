@@ -1353,3 +1353,18 @@ function solution(book_time) {
     return rooms.length
 }
  ```
+[줄 서는 방법](https://school.programmers.co.kr/learn/courses/30/lessons/12936) (연습 문제)
+ ```javascript
+function solution(n, k) {
+    const answer = []
+    const factorial = (n) => n === 0 || n === 1 ? 1 : n * factorial(n-1)
+    const num = Array.from({ length: n }, (_, i) => i + 1)
+    for(let i=0;i<n;i++){
+        const index = Math.ceil(k / factorial(num.length-1)) - 1
+        k = k % factorial(num.length-1)
+        answer.push(num.splice(index,1)[0])
+    }
+
+    return answer
+}
+ ```
