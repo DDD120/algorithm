@@ -1368,3 +1368,37 @@ function solution(n, k) {
     return answer
 }
  ```
+[배달](https://school.programmers.co.kr/learn/courses/30/lessons/12978) (Summer/Winter Coding(~2018))
+ ```javascript
+function solution(N, road, K) {
+    const graph = Array.from({ length: N }, () => new Array(N).fill(500000))
+    road.forEach(([t1,t2,time]) => {
+        if(graph[t1-1][t2-1] > time) graph[t1-1][t2-1] = time
+        if(graph[t2-1][t1-1] > time) graph[t2-1][t1-1] = time
+    })
+    const times = [...graph[0]]
+    const visited = new Array(N).fill(false)
+    visited[0] = true
+    for(let i=0;i<N;i++){
+        let current = 0
+        let min = 500000
+        for(let j=0;j<N;j++){
+            if(!visited[j] && times[j] < min){
+                min = times[j]
+                current = j
+            }
+        }
+        visited[current] = true
+        for(let j=0;j<N;j++){
+            if(!visited[j]){
+                const time = times[current] + graph[current][j]
+                if(time < times[j]){
+                    times[j] = time
+                }
+            }
+        }
+    }
+
+    return times.filter(time => time <= K).length + 1
+}
+ ```
