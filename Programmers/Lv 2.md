@@ -1402,3 +1402,28 @@ function solution(N, road, K) {
     return times.filter(time => time <= K).length + 1
 }
  ```
+[숫자 카드 나누기](https://school.programmers.co.kr/learn/courses/30/lessons/135807) (연습 문제)
+ ```javascript
+function solution(arrayA, arrayB) {
+    let answer = 0
+    function getMultipleGCD(numbers) {
+        let gcd = numbers[0]
+        function getGCD(a, b) {
+          while (b) {
+            const temp = b
+            b = a % b
+            a = temp
+          }
+          return a
+        }
+        for(let i=1;i<numbers.length;i++) gcd = getGCD(gcd, numbers[i])
+        return gcd
+    }
+    const a = getMultipleGCD(arrayA)
+    if(arrayB.every(n => n % a)) answer = a
+    const b = getMultipleGCD(arrayB)
+    if(arrayA.every(n => n % b) && answer < b) answer = b
+
+    return answer
+}
+ ```
