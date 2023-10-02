@@ -1427,3 +1427,21 @@ function solution(arrayA, arrayB) {
     return answer
 }
  ```
+[시소 짝꿍](https://school.programmers.co.kr/learn/courses/30/lessons/152996) (연습 문제)
+ ```javascript
+function solution(weights) {
+    let answer = 0
+    const dict = {}
+    for(let weight of weights) dict[weight] = dict[weight] ? dict[weight]+1 : 1
+    weights.sort((a,b) => a-b)
+    for(let weight of weights){
+        if(dict[weight] > 1) answer += (dict[weight]-1)
+        answer += (dict[weight*2] ?? 0)
+        answer += (dict[weight*(3/2)] ?? 0)
+        answer += (dict[weight*(4/3)] ?? 0)
+        dict[weight]--
+    }
+
+    return answer
+}
+ ```
