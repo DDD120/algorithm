@@ -1445,3 +1445,20 @@ function solution(weights) {
     return answer
 }
  ```
+[가장 큰 정사각형 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/12905) (연습 문제)
+ ```javascript
+function solution(board){
+    if(board.every(row => row.every(b => !b))) return 0
+    let answer = 1
+    for(let i=1;i<board.length;i++){
+        for(let j=1;j<board[0].length;j++){
+            if(!board[i][j]) continue
+            const min = Math.min(board[i-1][j],board[i][j-1],board[i-1][j-1])
+            board[i][j] = min + 1
+            if(answer < board[i][j]) answer = board[i][j]
+        }
+    }
+
+    return answer * answer
+} 
+ ```
