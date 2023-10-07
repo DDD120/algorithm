@@ -1462,3 +1462,34 @@ function solution(board){
     return answer * answer
 } 
  ```
+[거리두기 확인하기](https://school.programmers.co.kr/learn/courses/30/lessons/81302) (2021 카카오 채용연계형 인턴십)
+ ```javascript
+function solution(places) {
+    const moves = [[-1,0],[0,1],[1,0],[0,-1]]
+    const answer = places.map(place => {
+        let valid = 1
+        for(let i=0;i<5;i++){
+            if(!valid) break
+            for(let j=0;j<5;j++){
+                if(!valid) break
+                if(place[i][j] !== 'P') continue
+                const visited = Array.from({length:5}, () => new Array(5).fill(false))
+                function explore(distance, pos){
+                    let [y,x] = pos
+                    if(distance > 2 || y < 0 || y > 4 || x < 0 || x > 4) return
+                    if(place[y][x] === 'X') return
+                    visited[y][x] = true
+                    if(distance && place[y][x] === 'P') return valid = 0
+                    moves.forEach(move => {
+                        const [my, mx] = move
+                        if(!visited[y+my]?.[x+mx]) explore(distance+1, [y+my,x+mx])
+                    })
+                }
+                explore(0, [i,j])
+            }
+        }
+        return valid
+    })
+    return answer
+}
+ ```
