@@ -1504,3 +1504,14 @@ function solution(k, d) {
     return answer
 }
  ```
+[멀쩡한 사각형](https://school.programmers.co.kr/learn/courses/30/lessons/62048) (Summer/Winter Coding(2019))
+ ```javascript
+function solution(w, h) {
+    let count = 0
+    for(let x=1;x<=w;x++) {
+        count += Math.ceil(h*(x+1)/w) - Math.floor(h*x/w)
+    }
+
+    return w*h-count
+}
+ ```
