@@ -1515,3 +1515,15 @@ function solution(w, h) {
     return w*h-count
 }
  ```
+[테이블 해시 함수](https://school.programmers.co.kr/learn/courses/30/lessons/147354) (연습 문제)
+ ```javascript
+function solution(data, col, row_begin, row_end) {
+    let answer = 0
+    data.sort((a,b) => a[col-1]-b[col-1] || b[0]-a[0])
+    for(let i=row_begin;i<=row_end;i++){
+        answer = answer ^ data[i-1].reduce((acc, cur) => acc += cur % i, 0) 
+    }
+
+    return answer
+}
+ ```
