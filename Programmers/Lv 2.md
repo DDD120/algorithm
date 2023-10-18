@@ -1527,3 +1527,55 @@ function solution(data, col, row_begin, row_end) {
     return answer
 }
  ```
+[미로 탈출](https://school.programmers.co.kr/learn/courses/30/lessons/159993) (연습 문제)
+ ```javascript
+function solution(maps) {
+    const [maxY, maxX] = [maps.length, maps[0].length]
+    function findPosition (char) {
+        let result
+        for(let y=0;y<maxY;y++){
+            for(let x=0;x<maxX;x++){
+                if(maps[y][x] === char) {
+                    result = [y,x]
+                    break
+                }
+            }
+        }
+        return result
+    }
+    const sPos = findPosition('S')
+    const lPos = findPosition('L')
+
+    const move = [[-1,0], [0,1], [1,0], [0,-1]]
+    function BFS([y,x],char){
+        let result = 0
+        const visited = Array.from({length: maxY}, () => new Array(maxX).fill(false))
+        const queue = [[y, x, 0]]
+        visited[y][x] = true
+
+        while(queue.length){
+            const [y, x, count] = queue.shift()
+            if(maps[y][x] === char) {
+                result = count
+                break
+            }
+            move.forEach((m) => {
+                const [my, mx] = [y+m[0], x+m[1]]
+                if(my < 0 || my >= maxY || mx < 0 || mx >= maxX) return
+                if(maps[my][mx] === 'X') return
+                if(!visited[my][mx]) {
+                    queue.push([my, mx, count+1])
+                    visited[my][mx] = true
+                }
+            })
+        }
+
+        return result
+    }
+    const s = BFS(sPos, 'L')
+    const l = BFS(lPos, 'E')
+    if(s === 0 || l === 0) return -1
+
+    return s + l
+}
+ ```
