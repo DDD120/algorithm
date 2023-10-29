@@ -1579,3 +1579,18 @@ function solution(maps) {
     return s + l
 }
  ```
+[하노이의 탑](https://school.programmers.co.kr/learn/courses/30/lessons/12946) (연습 문제)
+ ```javascript
+function solution(n) {
+    const answer = []
+    const move = (n, from, mid, to) => {
+        if(n === 1) return answer.push([from, to])
+        move(n-1, from, to, mid);
+        answer.push([from, to])
+        move(n-1, mid, from, to)
+    }
+    move(n, 1, 2, 3)
+
+    return answer
+}
+ ```
