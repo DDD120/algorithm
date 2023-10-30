@@ -1594,3 +1594,33 @@ function solution(n) {
     return answer
 }
  ```
+[문자열 압축](https://school.programmers.co.kr/learn/courses/30/lessons/60057) (2020 KAKAO BLIND RECRUITMENT)
+ ```javascript
+function solution(s) {
+    let answer = s.length
+    for(let i=1;i<=s.length/2;i++){
+        let comp = ''
+        let index = i
+        let stack = [s.slice(0,i)]
+        const add = (last) => {
+            if(stack.length === 1) comp += last
+            else comp += `${stack.length}${last}`
+            stack = []
+        }
+        while(stack.length){
+            const last = stack.at(-1)
+            if(index > s.length){
+                add(last)
+                break
+            }
+            const next = s.slice(index, index+i)
+            if(last && last !== next) add(last)
+            stack.push(next)
+            index += i
+        }
+        if(comp.length < answer) answer = comp.length
+    }
+
+    return answer
+}
+ ```
